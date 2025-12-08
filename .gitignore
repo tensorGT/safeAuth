@@ -1,0 +1,13 @@
+# Binaries
+*.exe
+/safeauth
+/safeauth-server
+
+# Local vault & secrets
+.safeauth/
+vault.json
+*.tmp
+
+# IDE / OS
+.DS_Store
+Thumbs.db
