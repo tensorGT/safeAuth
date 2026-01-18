@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>safeAuth — Zero-Password Ed25519 Auth</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo-dot"></div>
+        <div>
+          <h1>safeAuth</h1>
+          <p class="subtitle">128-bit BIP39 Root &middot; Per-Origin Ed25519 &middot; Zero Passwords</p>
+        </div>
+      </div>
+      <div class="status-pills">
+        <span id="server-pill" class="pill pill-neutral">Server: checking...</span>
+        <span id="agent-pill" class="pill pill-warn">Local Agent: offline</span>
+        <span id="session-pill" class="pill pill-neutral">Session: signed out</span>
+      </div>
+    </header>
+
+    <main class="grid">
+      <!-- Left Column: Actions & Authenticated View -->
+      <section class="card">
+        <div class="card-header">
+          <h2>Local Agent &amp; Auth Actions</h2>
+          <span class="badge">Go Keyring Bridge</span>
+        </div>
+        <p class="muted">
+          Private keys never leave the Go keyring agent. Start the bridge with:
+          <code>safeauth agent</code>
+        </p>
+
+        <div id="agent-info" class="kv-box hidden">
+          <div><span class="k">Account ID</span><span id="agent-acct" class="v mono"></span></div>
+          <div><span class="k">Origin</span><span id="agent-origin" class="v mono"></span></div>
+          <div><span class="k">Epoch</span><span id="agent-epoch" class="v mono"></span></div>
+          <div><span class="k">Public Key</span><span id="agent-pub" class="v mono truncate"></span></div>
+        </div>
+
+        <div class="btn-row">
+          <button id="btn-register" class="btn btn-primary" disabled>1. Register Account</button>
+          <button id="btn-login" class="btn btn-accent" disabled>2. Login (Ed25519)</button>
+          <button id="btn-rotate" class="btn btn-secondary" disabled>3. Rotate Key</button>
+          <button id="btn-anon" class="btn btn-secondary" disabled>4. Anon Ring Login</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3>Verify Existing Session Token</h3>
+        <div class="token-row">
+          <input id="token-input" type="text" placeholder="Paste Bearer session token from CLI or agent..." />
+          <button id="btn-verify-token" class="btn btn-secondary">Verify</button>
+        </div>
+      </section>
+
+      <!-- Right Column: Authenticated Dashboard -->
+      <section id="auth-card" class="card">
+        <div class="card-header">
+          <h2>Authenticated Dashboard</h2>
+          <span id="auth-mode-badge" class="badge badge-muted">Locked</span>
+        </div>
+
+        <div id="signed-out-view" class="empty-state">
+          <p>Not authenticated yet.</p>
+          <p class="muted">Register &amp; login via the Local Agent buttons or paste a session token to inspect your verified session claims.</p>
+        </div>
+
+        <div id="signed-in-view" class="hidden">
+          <div class="success-banner">
+            Authenticated without password, email, or PII.
+          </div>
+          <div class="kv-box">
+            <div><span class="k">Subject (sub)</span><span id="claim-sub" class="v mono"></span></div>
+            <div><span class="k">Origin</span><span id="claim-origin" class="v mono"></span></div>
+            <div><span class="k">Anonymous Proof</span><span id="claim-anon" class="v mono"></span></div>
+            <div><span class="k">Token ID (jti)</span><span id="claim-jti" class="v mono"></span></div>
+            <div><span class="k">Expires At</span><span id="claim-exp" class="v mono"></span></div>
+          </div>
+          <div class="btn-row">
+            <button id="btn-refresh-session" class="btn btn-secondary">Re-verify /session</button>
+            <button id="btn-logout" class="btn btn-danger">Clear Session</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bottom Left: Zero-PII Server Store -->
+      <section class="card span-2">
+        <div class="card-header">
+          <h2>Server Identity Store (Zero PII)</h2>
+          <button id="btn-refresh-accounts" class="btn btn-small">Refresh</button>
+        </div>
+        <p class="muted">
+          Everything the server stores per user: only an origin-isolated <code>account_id</code>, Ed25519 <code>public_key</code>, <code>recovery_public_key</code>, and <code>epoch</code>.
+        </p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Account ID</th>
+                <th>Active Public Key</th>
+                <th>Recovery Public Key</th>
+                <th>Epoch</th>
+                <th>Created</th>
+              </tr>
+            </thead>
+            <tbody id="accounts-tbody">
+              <tr><td colspan="5" class="muted center">No accounts registered yet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Bottom: Activity Log -->
+      <section class="card span-2">
+        <div class="card-header">
+          <h2>Cryptographic Event Log</h2>
+          <button id="btn-clear-log" class="btn btn-small">Clear</button>
+        </div>
+        <pre id="event-log" class="log-box">Ready. Waiting for server &amp; local agent...</pre>
+      </section>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
