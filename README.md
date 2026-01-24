@@ -1,4 +1,15 @@
-# safeAuth
+<p align="center">
+  <a href="https://github.com/tensorGT/safeAuth">
+    <img src="./assets/banner.svg" alt="safeAuth — Zero-password, local-first authentication" width="100%" />
+  </a>
+</p>
+
+<p align="center">
+  <strong>128-bit BIP39 Seed</strong> &middot;
+  <strong>Per-Origin HKDF Ed25519</strong> &middot;
+  <strong>Argon2id + XChaCha20-Poly1305 Vault</strong> &middot;
+  <strong>1-of-N Schnorr Ring Proofs</strong>
+</p>
 
 Zero-password, local-first authentication system in Go where your identity is rooted in a 128-bit BIP39 seed phrase and proven via Ed25519 challenge-response signatures without the server ever storing passwords, emails, or PII.
 

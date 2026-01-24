@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320" role="img" aria-label="safeAuth — Zero-password, local-first authentication">
+  <defs>
+    <pattern id="vline" width="14" height="24" patternUnits="userSpaceOnUse">
+      <line x1="7" y1="2" x2="7" y2="14" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1" />
+    </pattern>
+    <linearGradient id="fadeLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="1" />
+      <stop offset="55%" stop-color="#000000" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Base -->
+  <rect width="1200" height="320" rx="12" fill="#000000" />
+
+  <!-- Subtle vertical line matrix -->
+  <rect width="1200" height="320" rx="12" fill="url(#vline)" />
+  <rect width="1200" height="320" rx="12" fill="url(#fadeLeft)" />
+
+  <!-- Geometric Logo Mark + SAFEAUTH. Wordmark -->
+  <g transform="translate(415, 92)">
+    <!-- Minimalist geometric key/shield block mark -->
+    <rect x="0" y="0" width="14" height="44" fill="#ffffff" />
+    <rect x="14" y="0" width="16" height="14" fill="#ffffff" />
+    <rect x="30" y="14" width="14" height="16" fill="#ffffff" />
+    <rect x="14" y="30" width="16" height="14" fill="#ffffff" />
+
+    <text
+      x="62"
+      y="33"
+      fill="#ffffff"
+      font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+      font-size="34"
+      font-weight="500"
+      letter-spacing="3.5"
+    >SAFEAUTH.</text>
+  </g>
+
+  <!-- Tagline -->
+  <text
+    x="600"
+    y="204"
+    text-anchor="middle"
+    fill="#d4d4d8"
+    font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+    font-size="25"
+    font-weight="400"
+    letter-spacing="0.3"
+  >Zero-password, local-first authentication from a 128-bit BIP39 seed</text>
+</svg>
