@@ -1,6 +1,6 @@
 # safeAuth
 
-Zero-password, local-first authentication system in Go where your identity is rooted in a 128-bit BIP39 seed phrase and proven via Ed25519 challenge-response signatures—without the server ever storing passwords, emails, or PII.
+Zero-password, local-first authentication system in Go where your identity is rooted in a 128-bit BIP39 seed phrase and proven via Ed25519 challenge-response signatures without the server ever storing passwords, emails, or PII.
 
 ## Architecture
 
